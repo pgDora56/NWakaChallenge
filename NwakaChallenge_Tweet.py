@@ -9,35 +9,30 @@ twitter = OAuth1Session(CK, CS, AT, ATS) #認証処理
 
 url = "https://api.twitter.com/1.1/statuses/update.json" #タイムライン取得エンドポイント
 
-a="にわか"
-b="金"
-c="焼肉"
-d="人生"
-e="の"
-f="で"
-g="を"
-h="が"
-i="食べたい"
-j="豊かに"
-k="K3"
-list1=[a,b,c,d,k]
-list2=[e,f,g,h]
-list3=[i,j]
-list4=[]
+noun=["にわか","金","焼肉","人生","K3"] # 名詞
+particle = ["の","で","を","が","に","へ","と","から","より","で","や"] # (格)助詞
+lst=["食べたい","豊かに"] # 末文
+
+tweet_content=[]
 
 for z in range(3):
-    x=random.choice(list1)
-    y=random.choice(list2)
-    list4.append(x)
-    list4.append(y)
-list4.append(random.choice(list3))
-Nwaka = "#にわかちゃれんじ\n"+list4[0]+list4[1]+list4[2]+list4[3]+list4[4]+list4[5]+list4[6]
+    x=random.choice(noun)
+    y=random.choice(particle)
+    tweet_content.append(x)
+    tweet_content.append(y)
+tweet_content.append(random.choice(lst))
+
+Nwaka = "#にわかちゃれんじ\n"
+for l in tweet_content:
+    Nwaka += l
 print("{}".format(Nwaka))
 
 params = {"status" : Nwaka}
+
+
 res = twitter.post(url, params = params) #post送信
 
 if res.status_code == 200: #正常投稿出来た場合
-        print("Success.")
+    print("Success.")
 else:
-        print("Failed : %d" % res.status_code)
+    print("Failed : %d" % res.status_code)
