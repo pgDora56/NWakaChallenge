@@ -10,7 +10,7 @@ class Nouns:
         if self.__part == "person":
             return ["の","が","に","へ","と","、"]
         elif self.__part == "place":
-            return ["の","で","を","が","に","へ","と","、"]
+            return ["の","で","を","が","に","へ","と","から","、"]
         elif self.__part == "food":
             return ["で","を","が","に","へ","と","、"]
         else:
