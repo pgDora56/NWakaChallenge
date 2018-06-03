@@ -20,26 +20,22 @@ nouns = [Nouns("にわか","person"),
         Nouns("中央線","place"),
         Nouns("遅延","other"),
         Nouns("山","place"),
-        Nouns("回らない寿司","food")]
+        Nouns("寿司","food")]
 
 tweet_content=[]
 tweet_length = 10 # 初期値はハッシュタグ分
 is_continue = True
 nwaka_add = False
-# for z in range(3):
-    # x=random.choice(noun)
-    # y=random.choice(particle)
-    # tweet_content.append(x)
-    # tweet_content.append(y)
+
 while is_continue:
     noun_idx = random.randrange(0, len(nouns))
     noun_word = nouns.pop(noun_idx)
     part_word = random.choice(noun_word.next_particle())
 
-    tweet_content.append(noun_word.to_str())
+    tweet_content.append(noun_word.word)
     tweet_content.append(part_word)
-    tweet_length += len(noun_word.to_str()) + len(part_word)
-    if noun_word.to_str() == "にわか":
+    tweet_length += len(noun_word.word) + len(part_word)
+    if noun_word.word == "にわか":
         nwaka_add = True
     if part_word == "が":
         tweet_content.append(random.choice(lst))
@@ -57,7 +53,7 @@ print("{}".format(Nwaka))
 
 yesno = ""
 while not yesno in ["Y","n"]:
-    yesno = input("OK? Y/n:")
+    yesno = input("Tweet OK? Y/n:")
 
 if yesno == "Y":
     params = {"status" : Nwaka}
