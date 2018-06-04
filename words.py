@@ -29,3 +29,5 @@ class Nouns(Words):
             return random.choice(modi) + self.word
         elif r < 0.6:
             return random.choice(nouns) + "の" + self.word
+        else:
+            return self.word
