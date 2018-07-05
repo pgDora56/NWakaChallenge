@@ -19,6 +19,7 @@ while not yesno in ["Y","n"]:
     nouns = [Nouns("にわか","person"),
             Nouns("にわな","person"),
             Nouns("にわかっぱ","person"),
+            Nouns("雪田","person"),
             Nouns("金","other"),
             Nouns("焼肉","food"),
             Nouns("人生","other"),
